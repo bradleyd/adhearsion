@@ -139,6 +139,7 @@ module Adhearsion
             end
           end
           t.join 5
+          p t.value
           t.status.should be == "sleep"
           Events.trigger_immediately :punchblock, Punchblock::Connection::Connected.new
           t.join
