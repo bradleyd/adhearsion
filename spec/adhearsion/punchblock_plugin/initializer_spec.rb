@@ -130,7 +130,14 @@ module Adhearsion
           mock_connection.should_receive(:register_event_handler).once
           flexmock(Punchblock::Client).should_receive(:new).once.and_return mock_connection
           flexmock(mock_connection).should_receive(:run).once
-          t = Thread.new { Initializer.init; Initializer.run }
+          t = Thread.new do
+            begin
+              Initializer.init
+              Initializer.run
+            rescue => e
+              puts "Initializer failed due to #{e.message}"
+            end
+          end
           t.join 5
           t.status.should be == "sleep"
           Events.trigger_immediately :punchblock, Punchblock::Connection::Connected.new
