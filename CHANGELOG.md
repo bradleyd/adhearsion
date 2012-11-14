@@ -3,7 +3,9 @@
   * Feature: Allow specifying controller metadata when originating outbound calls
   * Feature: Allow specifying confirmation controller metadata to `CallController#dial`
   * Feature: Set default voice on output components when specified in config
+  * Feature: Be more flexible about DTMF utterance parsing
   * Bugfix: Generate sane spec defaults for new apps and controllers
+  * Bugfix: `CallController#record` now allows partial-second timeouts
 
 # [2.1.3](https://github.com/adhearsion/adhearsion/compare/v2.1.2...v2.1.3) - [2012-10-11](https://rubygems.org/gems/adhearsion/versions/2.1.3)
   * Bugfix: Originating call is now answered before joining calls using `CallController#dial`
